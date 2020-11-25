@@ -1,12 +1,20 @@
 const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/main.js',
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
-        publicPath: 'dist/'
+        path: path.resolve(__dirname, '../dist'),
+        filename: 'bundle.js'
+        //publicPath: 'dist/'
     },
+    plugins: [
+        new webpack.BannerPlugin('最终版权归cdt所有'),
+        new HtmlWebpackPlugin({
+            template: 'index.html'
+        })
+    ],
     module: {
         rules: [
             {
@@ -47,13 +55,13 @@ module.exports = {
             },
             {
                 test: /\.vue$/,
-                use:['vue-loader']
+                use: ['vue-loader']
             }
         ]
     },
-    resolve:{
-        alias:{
-            'vue$':'vue/dist/vue.esm.js'
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js'
         }
     }
 };

@@ -35,7 +35,6 @@ import App from './vue/App.vue'
 new Vue({
     el: '#app',
     template: `<App/>`,
-    data: {},
     components: {
         App
     }
