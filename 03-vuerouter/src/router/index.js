@@ -20,10 +20,10 @@ export default new Router({
       name: 'Home',
       component: Home,
       children: [
-        {
+        /*{
           path: '',
           redirect: 'news'
-        },
+        },*/
         {
           path: 'news',
           name: 'News',

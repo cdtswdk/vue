@@ -2,15 +2,18 @@
   <div id="app">
     <router-link to="/home" replace>首页</router-link>
     <router-link to="/about" replace>关于</router-link>
-<!--    <router-link to="/user/zhangsan" replace>用户</router-link>-->
+    <!--    <router-link to="/user/zhangsan" replace>用户</router-link>-->
     <!--<router-link :to="/user/+userId">用户</router-link>-->
     <!--    <button @click="homeClick">首页</button>-->
     <!--    <button @click="aboutClick">关于</button>-->
     <button @click="userClick">用户</button>
-<!--    <router-link to="/profile">档案</router-link>-->
-<!--    <router-link :to="{path: '/profile/123',query:{name:'张三',age:18,height:1.75}}">档案</router-link>-->
+    <!--    <router-link to="/profile">档案</router-link>-->
+    <!--    <router-link :to="{path: '/profile/123',query:{name:'张三',age:18,height:1.75}}">档案</router-link>-->
     <button @click="profileClick">档案</button>
-    <router-view/>
+    <keep-alive exclude="Profile,user">
+      <router-view/>
+    </keep-alive>
+
   </div>
 </template>
 
@@ -19,7 +22,7 @@
     name: 'App',
     data() {
       return {
-        userId:'张三'
+        userId: '张三'
       }
     },
     methods: {
@@ -31,16 +34,16 @@
         // this.$router.push('/about');
         this.$router.replace('/about');
       },
-      userClick(){
-        this.$router.replace('/user/'+this.userId)
+      userClick() {
+        this.$router.replace('/user/' + this.userId)
       },
-      profileClick(){
+      profileClick() {
         this.$router.replace({
-          path:'/profile',
-          query:{
-            name:'张三',
-            age:18,
-            height:1.85
+          path: '/profile',
+          query: {
+            name: '张三',
+            age: 18,
+            height: 1.85
           }
         })
       }
